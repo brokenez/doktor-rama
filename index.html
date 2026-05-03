@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Доктор Рама — Ремонт рам внедорожников</title>
+  <meta name="description" content="Специализированный сервис по ремонту, усилению и восстановлению рам внедорожников. Опыт более 10 лет. Гарантия на все работы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0f2744;
+      --navy-dark: #091a2e;
+      --navy-mid: #173352;
+      --navy-light: #1e4068;
+      --yellow: #f0c040;
+      --yellow-light: #f5d070;
+      --yellow-dark: #c99a20;
+      --white: #ffffff;
+      --gray-light: #e8edf4;
+      --gray-mid: #a8b8cc;
+      --text-muted: #7a92aa;
+      --rust: #c45820;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: var(--navy-dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 76px;
+      background: rgba(9, 26, 46, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(240, 192, 64, 0.15);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .nav-logo-text {
+      line-height: 1.1;
+    }
+
+    .nav-logo-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--yellow);
+    }
+
+    .nav-logo-sub {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--yellow); }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--navy-dark) !important;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover { background: var(--yellow-light); color: var(--navy-dark) !important; }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--yellow);
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-dark);
+      padding-top: 76px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 50%, rgba(23, 51, 82, 0.8) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(240, 192, 64, 0.06) 0%, transparent 60%);
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(240,192,64,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240,192,64,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 60px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 24px;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 7vw, 96px);
+      line-height: 0.92;
+      letter-spacing: 4px;
+      margin-bottom: 28px;
+    }
+
+    .hero-title .accent { color: var(--yellow); }
+
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--gray-mid);
+      max-width: 480px;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--yellow);
+      color: var(--navy-dark);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--yellow-light); transform: translateY(-1px); }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 32px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+      background: rgba(240,192,64,0.05);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-logo-wrap {
+      position: relative;
+      width: 340px;
+      height: 340px;
+    }
+
+    .hero-logo-ring {
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      border: 1px solid rgba(240,192,64,0.2);
+      animation: rotate-slow 20s linear infinite;
+    }
+
+    .hero-logo-ring::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+    }
+
+    .hero-logo-ring-2 {
+      position: absolute;
+      inset: -48px;
+      border-radius: 50%;
+      border: 1px dashed rgba(240,192,64,0.08);
+      animation: rotate-slow 35s linear infinite reverse;
+    }
+
+    @keyframes rotate-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-logo-img {
+      width: 340px;
+      height: 340px;
+      object-fit: contain;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 40px rgba(240,192,64,0.2));
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 60px; }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 60px);
+      letter-spacing: 3px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .section-title .accent { color: var(--yellow); }
+
+    .section-desc {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--gray-mid);
+      max-width: 560px;
+      margin-bottom: 56px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--navy); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      background: var(--navy-mid);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { background: var(--navy-light); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      color: rgba(240,192,64,0.12);
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-num { color: rgba(240,192,64,0.25); }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .service-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    .service-price {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 13px;
+      color: var(--yellow);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--navy-dark); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    .why-visual {
+      position: relative;
+    }
+
+    .why-badge-main {
+      background: var(--navy-mid);
+      border: 1px solid rgba(240,192,64,0.2);
+      padding: 44px 40px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .why-badge-main-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 88px;
+      color: var(--yellow);
+      line-height: 1;
+      display: block;
+    }
+
+    .why-badge-main-text {
+      font-size: 14px;
+      color: var(--gray-mid);
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    .why-badges-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .why-badge-small {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 24px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .why-badge-small-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .why-badge-small-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .why-item-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(240,192,64,0.1);
+      border: 1px solid rgba(240,192,64,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .why-item-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+
+    .why-item-body p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--navy); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 56px;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .process-step::after {
+      content: '';
+      position: absolute;
+      top: 52px;
+      right: -50%;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240,192,64,0.4), rgba(240,192,64,0.1));
+    }
+
+    .process-step:last-child::after { display: none; }
+
+    .process-num {
+      width: 56px;
+      height: 56px;
+      background: var(--navy-dark);
+      border: 2px solid var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: var(--yellow);
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .process-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── GALLERY / CASES ── */
+    #cases { background: var(--navy-dark); }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+      margin-top: 56px;
+    }
+
+    .case-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--navy-mid);
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+
+    .case-card.large {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    .case-card-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .case-card:hover .case-card-bg { transform: scale(1.06); }
+
+    .case-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,26,46,0.9) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+    }
+
+    .case-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+
+    .case-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+
+    .case-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--navy-mid), var(--navy-dark));
+    }
+
+    .case-placeholder svg { opacity: 0.15; }
+
+    /* ── BRANDS ── */
+    #brands { background: var(--navy); padding: 60px; }
+
+    .brands-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brands-label {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .brands-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .brand-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: rgba(168, 184, 204, 0.35);
+      transition: color 0.3s;
+    }
+
+    .brand-item:hover { color: var(--yellow); }
+
+    /* ── TESTIMONIALS ── */
+    #reviews { background: var(--navy-dark); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .review-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 32px;
+      position: relative;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .review-star {
+      width: 16px;
+      height: 16px;
+      color: var(--yellow);
+      fill: var(--yellow);
+    }
+
+    .review-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--gray-mid);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy-light);
+      border: 2px solid rgba(240,192,64,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      color: var(--yellow);
+    }
+
+    .review-name {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .review-car {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── CTA BANNER ── */
+    #cta-banner {
+      background: var(--yellow);
+      padding: 80px 60px;
+    }
+
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: 3px;
+      color: var(--navy-dark);
+      line-height: 1.1;
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: rgba(9,26,46,0.65);
+      margin-top: 10px;
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--navy-dark);
+      color: var(--yellow);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 36px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-dark:hover { background: var(--navy); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 56px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(240,192,64,0.1);
+      border: 1px solid rgba(240,192,64,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item-body label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-item-body a,
+    .contact-item-body p {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .contact-item-body a:hover { color: var(--yellow); }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--navy-mid);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+      min-height: 48px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--yellow);
+    }
+
+    .form-group textarea { min-height: 120px; resize: vertical; }
+
+    .form-group select option { background: var(--navy-mid); }
+
+    .form-submit {
+      margin-top: 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 56px 60px 40px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+    }
+
+    .footer-brand img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 280px;
+      margin-top: 12px;
+    }
+
+    .footer-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 4px;
+      color: var(--yellow);
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+    .footer-col ul a {
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--yellow); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .social-link:hover {
+      border-color: var(--yellow);
+      background: rgba(240,192,64,0.1);
+    }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      z-index: 2;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--yellow));
+    }
+
+    /* ── MOBILE NAV ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--navy-dark);
+      z-index: 999;
+      padding: 100px 40px 40px;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:hover { color: var(--yellow); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .nav-links { display: none; }
+      .burger { display: flex; }
+      section { padding: 80px 32px; }
+      .hero-content { grid-template-columns: 1fr; text-align: center; padding: 60px 32px; gap: 40px; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { order: -1; }
+      .hero-logo-wrap { width: 220px; height: 220px; }
+      .hero-logo-img { width: 220px; height: 220px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(3, 1fr); }
+      .process-step:nth-child(3)::after { display: none; }
+      .cases-grid { grid-template-columns: 1fr 1fr; }
+      .case-card.large { grid-column: span 2; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .cta-inner { flex-direction: column; text-align: center; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 60px 20px; }
+      nav { padding: 0 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-step:nth-child(2)::after { display: none; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .case-card.large { grid-column: span 1; aspect-ratio: 4/3; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      #brands { padding: 40px 20px; }
+      #cta-banner { padding: 60px 20px; }
+      footer { padding: 40px 20px 32px; }
+      .hero-stats { gap: 24px; }
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="logo.png" alt="Доктор Рама лого" />
+    <div class="nav-logo-text">
+      <div class="nav-logo-title">Доктор Рама</div>
+      <div class="nav-logo-sub">Ремонт рам внедорожников</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#why">О нас</a></li>
+    <li><a href="#process">Процесс</a></li>
+    <li><a href="#cases">Работы</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contact" class="nav-cta">Записаться</a></li>
+  </ul>
+  <div class="burger" id="burger" role="button" aria-label="Открыть меню" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Мобильное меню">
+  <a href="#services" onclick="closeMobileNav()">Услуги</a>
+  <a href="#why" onclick="closeMobileNav()">О нас</a>
+  <a href="#process" onclick="closeMobileNav()">Процесс</a>
+  <a href="#cases" onclick="closeMobileNav()">Работы</a>
+  <a href="#reviews" onclick="closeMobileNav()">Отзывы</a>
+  <a href="#contact" onclick="closeMobileNav()" style="color:var(--yellow)">Записаться</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-label">Специализированный сервис</div>
+      <h1 class="hero-title">
+        РЕМОНТ<br />
+        <span class="accent">РАМ</span><br />
+        ВНЕДОРОЖНИКОВ
+      </h1>
+      <p class="hero-desc">
+        Единственный в регионе сервис, специализирующийся исключительно на ремонте, усилении и восстановлении рам внедорожников. Никаких компромиссов — только надёжный металл.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          Записаться на диагностику
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#cases" class="btn-secondary">Смотреть работы</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label">Лет опыта</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">500+</div>
+          <div class="hero-stat-label">Отремонтировано рам</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Гарантия на сварку</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <div class="hero-logo-ring"></div>
+        <div class="hero-logo-ring-2"></div>
+        <img src="logo.png" alt="Доктор Рама" class="hero-logo-img" />
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-line"></div>
+    Скролл
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Что мы делаем</div>
+    <h2 class="section-title">НАШИ <span class="accent">УСЛУГИ</span></h2>
+    <p class="section-desc">Полный спектр работ по рамам внедорожников: от диагностики до полного восстановления. Работаем с любыми марками и годами выпуска.</p>
+  </div>
+  <div class="container">
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="18" width="36" height="6" rx="2" stroke="#f0c040" stroke-width="2"/>
+          <rect x="6" y="28" width="36" height="6" rx="2" stroke="#f0c040" stroke-width="2"/>
+          <circle cx="12" cy="21" r="2" fill="#f0c040"/>
+          <circle cx="12" cy="31" r="2" fill="#f0c040"/>
+          <path d="M6 21h6M18 21h24M6 31h6M18 31h24" stroke="#f0c040" stroke-width="1.5"/>
+        </svg>
+        <div class="service-title">Диагностика рамы</div>
+        <p class="service-desc">Полный визуальный и инструментальный осмотр рамы. Выявляем трещины, деформации, коррозию и скрытые повреждения. Отчёт с фотофиксацией.</p>
+        <div class="service-price">от 3 000 ₽</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 24L16 16L24 24L32 16L40 24" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 30L22 22M26 30L34 22" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="28" cy="34" r="3" fill="none" stroke="#f0c040" stroke-width="2"/>
+          <path d="M30 34l5 5" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="service-title">Сварочные работы</div>
+        <p class="service-desc">Профессиональная аргонодуговая и полуавтоматическая сварка. Заварка трещин, вварка усилителей, восстановление геометрии рамы после ДТП.</p>
+        <div class="service-price">от 8 000 ₽</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="20" width="32" height="8" rx="2" stroke="#f0c040" stroke-width="2"/>
+          <rect x="4" y="22" width="6" height="4" rx="1" stroke="#f0c040" stroke-width="2"/>
+          <rect x="38" y="22" width="6" height="4" rx="1" stroke="#f0c040" stroke-width="2"/>
+          <path d="M14 20v-4M20 20v-6M26 20v-4M34 20v-6" stroke="#f0c040" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 28v4M20 28v6M26 28v4M34 28v6" stroke="#f0c040" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div class="service-title">Усиление рамы</div>
+        <p class="service-desc">Установка дополнительных усилителей и косынок. Подготовка рамы к езде в тяжёлом бездорожье, буксировке и повышенным нагрузкам.</p>
+        <div class="service-price">от 12 000 ₽</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">04</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 36L8 40M36 12L40 8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <rect x="14" y="14" width="20" height="20" rx="3" stroke="#f0c040" stroke-width="2"/>
+          <path d="M20 24h8M24 20v8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="service-title">Правка геометрии</div>
+        <p class="service-desc">Восстановление геометрических размеров рамы после аварий и деформаций. Используем профессиональный стапель с компьютерным контролем.</p>
+        <div class="service-price">от 15 000 ₽</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-num">05</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 30C10 22 14 16 24 16C34 16 38 22 38 30" stroke="#f0c040" stroke-width="2"/>
+          <path d="M8 32h32" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 32l-2 8M32 32l2 8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="32" r="3" fill="none" stroke="#f0c040" stroke-width="2"/>
+        </svg>
+        <div class="service-title">Антикоррозийная обработка</div>
+        <p class="service-desc">Комплексная защита рамы от ржавчины после ремонта. Пескоструйная очистка, грунтование, нанесение антикора и защитного покрытия.</p>
+        <div class="service-price">от 10 000 ₽</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-5">
+        <div class="service-num">06</div>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="14" stroke="#f0c040" stroke-width="2"/>
+          <path d="M24 16v8l5 5" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 8l-4-4M34 8l4-4" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="service-title">Полное восстановление</div>
+        <p class="service-desc">Комплексный ремонт рамы «под ключ»: диагностика, сварка, правка геометрии, покраска и антикор. Возвращаем раму к заводским параметрам.</p>
+        <div class="service-price">от 35 000 ₽</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="section-label">Почему мы</div>
+    <h2 class="section-title">ОПЫТ И <span class="accent">ПРОФЕССИОНАЛИЗМ</span></h2>
+    <div class="why-grid">
+      <div class="why-visual reveal">
+        <div class="why-badge-main">
+          <span class="why-badge-main-num">10+</span>
+          <div class="why-badge-main-text">Лет специализируемся исключительно на рамах</div>
+        </div>
+        <div class="why-badges-row">
+          <div class="why-badge-small">
+            <div class="why-badge-small-num">500+</div>
+            <div class="why-badge-small-text">Рам отремонтировано</div>
+          </div>
+          <div class="why-badge-small">
+            <div class="why-badge-small-num">40+</div>
+            <div class="why-badge-small-text">Марок внедорожников</div>
+          </div>
+          <div class="why-badge-small">
+            <div class="why-badge-small-num">3</div>
+            <div class="why-badge-small-text">Сварочных поста</div>
+          </div>
+          <div class="why-badge-small">
+            <div class="why-badge-small-num">12</div>
+            <div class="why-badge-small-text">Мес. гарантия</div>
+          </div>
+        </div>
+      </div>
+      <ul class="why-list">
+        <li class="why-item reveal reveal-delay-1">
+          <div class="why-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="why-item-body">
+            <h3>Узкая специализация</h3>
+            <p>Мы не делаем всё подряд. Только рамы — только внедорожники. Это позволяет нам быть лучшими в своём деле и решать даже самые сложные случаи.</p>
+          </div>
+        </li>
+        <li class="why-item reveal reveal-delay-2">
+          <div class="why-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+          </div>
+          <div class="why-item-body">
+            <h3>Прозрачная диагностика</h3>
+            <p>Подробный отчёт с фотографиями и описанием всех найденных дефектов. Вы точно знаете, за что платите, до начала работ.</p>
+          </div>
+        </li>
+        <li class="why-item reveal reveal-delay-3">
+          <div class="why-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="why-item-body">
+            <h3>Гарантия на все работы</h3>
+            <p>12 месяцев гарантии на сварочные швы. Если что-то пойдёт не так — устраним за наш счёт. Ни один клиент не уходил разочарованным.</p>
+          </div>
+        </li>
+        <li class="why-item reveal reveal-delay-4">
+          <div class="why-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="why-item-body">
+            <h3>Чёткие сроки</h3>
+            <p>Называем реальные сроки и придерживаемся их. Большинство работ выполняем за 1–3 дня. Срочный ремонт — за 24 часа.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-label">Как мы работаем</div>
+    <h2 class="section-title">ПРОЦЕСС <span class="accent">РЕМОНТА</span></h2>
+    <p class="section-desc">Прозрачный и понятный процесс от первого звонка до выдачи автомобиля.</p>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-num">1</div>
+        <div class="process-title">Заявка</div>
+        <p class="process-desc">Звонок или форма на сайте. Предварительная оценка по фото.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-num">2</div>
+        <div class="process-title">Диагностика</div>
+        <p class="process-desc">Полный осмотр рамы. Детальный отчёт о состоянии.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-num">3</div>
+        <div class="process-title">Согласование</div>
+        <p class="process-desc">Смета и сроки. Утверждение плана работ с клиентом.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-num">4</div>
+        <div class="process-title">Ремонт</div>
+        <p class="process-desc">Выполнение работ с фотофиксацией каждого этапа.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="process-num">5</div>
+        <div class="process-title">Выдача</div>
+        <p class="process-desc">Контроль качества. Гарантийные документы на руки.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="container">
+    <div class="section-label">Портфолио</div>
+    <h2 class="section-title">НАШИ <span class="accent">РАБОТЫ</span></h2>
+    <p class="section-desc">Реальные примеры ремонтов. От небольших трещин до полного восстановления после серьёзных аварий.</p>
+
+    <div class="cases-grid">
+      <!-- Case 1 - Large -->
+      <div class="case-card large reveal">
+        <div class="case-placeholder">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="30" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"/><rect x="10" y="46" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"/><circle cx="22" cy="36" r="3" fill="#f0c040"/><circle cx="22" cy="52" r="3" fill="#f0c040"/></svg>
+        </div>
+        <div class="case-card-overlay">
+          <div class="case-tag">Toyota Land Cruiser 80</div>
+          <div class="case-title">Восстановление рамы после ДТП</div>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-card reveal reveal-delay-1">
+        <div class="case-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M10 30c0-6 4-12 20-12s20 6 20 12" stroke="#f0c040" stroke-width="2"/><path d="M8 32h44" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="case-card-overlay">
+          <div class="case-tag">Jeep Wrangler JK</div>
+          <div class="case-title">Усиление рамы для офф-роуда</div>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="case-card reveal reveal-delay-2">
+        <div class="case-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="10" y="22" width="40" height="10" rx="2" stroke="#f0c040" stroke-width="2"/><rect x="10" y="34" width="40" height="10" rx="2" stroke="#f0c040" stroke-width="2"/></svg>
+        </div>
+        <div class="case-card-overlay">
+          <div class="case-tag">Nissan Patrol Y61</div>
+          <div class="case-title">Сварка трещины лонжерона</div>
+        </div>
+      </div>
+
+      <!-- Case 4 -->
+      <div class="case-card reveal reveal-delay-3">
+        <div class="case-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M20 40L10 50M40 20L50 10" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/><rect x="18" y="18" width="24" height="24" rx="3" stroke="#f0c040" stroke-width="2"/></svg>
+        </div>
+        <div class="case-card-overlay">
+          <div class="case-tag">Land Rover Defender</div>
+          <div class="case-title">Правка геометрии рамы</div>
+        </div>
+      </div>
+
+      <!-- Case 5 - Large -->
+      <div class="case-card large reveal reveal-delay-4">
+        <div class="case-placeholder">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="#f0c040" stroke-width="1.5"/><path d="M40 20v20l12 12" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="case-card-overlay">
+          <div class="case-tag">Mitsubishi Pajero 3</div>
+          <div class="case-title">Полное восстановление + антикор</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="brands-inner">
+    <p class="brands-label">Работаем с любыми марками внедорожников</p>
+    <div class="brands-list">
+      <div class="brand-item">TOYOTA</div>
+      <div class="brand-item">JEEP</div>
+      <div class="brand-item">LAND ROVER</div>
+      <div class="brand-item">NISSAN</div>
+      <div class="brand-item">MITSUBISHI</div>
+      <div class="brand-item">UAZ</div>
+      <div class="brand-item">FORD</div>
+      <div class="brand-item">SUZUKI</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-label">Отзывы клиентов</div>
+    <h2 class="section-title">ЧТО ГОВОРЯТ <span class="accent">КЛИЕНТЫ</span></h2>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Привёз Prado 150 с трещиной в раме после серьёзного диагонального скручивания. Думал — машине конец. Ребята сделали диагностику, показали всё на фото, объяснили план работ. Результат превзошёл ожидания — рама как новая, сварные швы аккуратнее заводских.</p>
+        <div class="review-author">
+          <div class="review-avatar">АК</div>
+          <div>
+            <div class="review-name">Александр К.</div>
+            <div class="review-car">Toyota Land Cruiser Prado 150</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars">
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Усиливали раму Дефендера под экспедиционные задачи. Обсудили все нюансы, предложили несколько вариантов усиления с разной ценой. Работу сделали быстро и качественно. Машина прошла уже 30 000 км по тяжёлому бездорожью — без нареканий.</p>
+        <div class="review-author">
+          <div class="review-avatar">МВ</div>
+          <div>
+            <div class="review-name">Михаил В.</div>
+            <div class="review-car">Land Rover Defender 110</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars">
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">Обратился с гнилой рамой Patrol'а. Думал придётся покупать новую — цены кусаются. Доктор Рама полностью восстановили раму с заменой сгнивших секций, сделали пескоструй и антикор. Цена разумная, гарантия год. Очень доволен.</p>
+        <div class="review-author">
+          <div class="review-avatar">ДС</div>
+          <div>
+            <div class="review-name">Дмитрий С.</div>
+            <div class="review-car">Nissan Patrol Y61</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-title">РАМА ТРЕБУЕТ ВНИМАНИЯ?<br />НЕ ОТКЛАДЫВАЙ</h2>
+      <p class="cta-sub">Бесплатная предварительная консультация по фото</p>
+    </div>
+    <a href="#contact" class="btn-dark">
+      Записаться сейчас
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Связаться с нами</div>
+    <h2 class="section-title">ЗАПИСАТЬСЯ НА <span class="accent">РЕМОНТ</span></h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item reveal">
+          <div class="contact-item-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.69A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14h.01z"/></svg>
+          </div>
+          <div class="contact-item-body">
+            <label>Телефон</label>
+            <a href="tel:+79001234567">+7 (900) 123-45-67</a>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-1">
+          <div class="contact-item-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-item-body">
+            <label>Адрес</label>
+            <p>ул. Промышленная, д. 15, бокс 7</p>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-2">
+          <div class="contact-item-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="contact-item-body">
+            <label>Режим работы</label>
+            <p>Пн–Сб: 9:00–19:00<br />Вс: по записи</p>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-3">
+          <div class="contact-item-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="contact-item-body">
+            <label>Email</label>
+            <a href="mailto:info@doktor-rama.ru">info@doktor-rama.ru</a>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal reveal-delay-1" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" placeholder="Иван Иванов" required aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required aria-required="true" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="car">Марка и модель автомобиля</label>
+          <input type="text" id="car" placeholder="Например: Toyota Land Cruiser 80" />
+        </div>
+        <div class="form-group">
+          <label for="service">Необходимая услуга</label>
+          <select id="service">
+            <option value="">Выберите услугу</option>
+            <option>Диагностика рамы</option>
+            <option>Сварочные работы</option>
+            <option>Усиление рамы</option>
+            <option>Правка геометрии</option>
+            <option>Антикоррозийная обработка</option>
+            <option>Полное восстановление</option>
+            <option>Не знаю, нужна консультация</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Описание проблемы</label>
+          <textarea id="message" placeholder="Опишите симптомы или проблему. Можно прикрепить фото при звонке."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+            Отправить заявку
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Доктор Рама" />
+      <div class="footer-brand-name">Доктор Рама</div>
+      <p>Специализированный сервис по ремонту, усилению и восстановлению рам внедорожников. Более 10 лет опыта. Гарантия на все работы.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Услуги</h4>
+      <ul>
+        <li><a href="#services">Диагностика рамы</a></li>
+        <li><a href="#services">Сварочные работы</a></li>
+        <li><a href="#services">Усиление рамы</a></li>
+        <li><a href="#services">Правка геометрии</a></li>
+        <li><a href="#services">Антикор</a></li>
+        <li><a href="#services">Полное восстановление</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Компания</h4>
+      <ul>
+        <li><a href="#why">О нас</a></li>
+        <li><a href="#cases">Наши работы</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#process">Как работаем</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="tel:+79001234567">+7 (900) 123-45-67</a></li>
+        <li><a href="mailto:info@doktor-rama.ru">info@doktor-rama.ru</a></li>
+        <li><a href="#contact">ул. Промышленная, 15</a></li>
+        <li><a href="#">Пн–Сб: 9:00–19:00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Доктор Рама. Все права защищены.</span>
+    <div class="social-links">
+      <a href="#" class="social-link" aria-label="ВКонтакте">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.726-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.71-.576.71z"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Telegram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.947l-2.94-.92c-.64-.203-.654-.64.136-.954l11.566-4.461c.537-.194 1.006.131.872.609z"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── BURGER ──
+  const burger = document.getElementById('burger');
+  const mobileNav = document.getElementById('mobileNav');
+  let navOpen = false;
+
+  function closeMobileNav() {
+    navOpen = false;
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', () => {
+    navOpen = !navOpen;
+    mobileNav.classList.toggle('open', navOpen);
+    document.body.style.overflow = navOpen ? 'hidden' : '';
+  });
+
+  burger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') burger.click();
+  });
+
+  // ── SCROLL REVEAL ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── NAV SCROLL ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.style.background = window.scrollY > 60
+      ? 'rgba(9, 26, 46, 0.98)'
+      : 'rgba(9, 26, 46, 0.92)';
+  }, { passive: true });
+
+  // ── FORM ──
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('[type="submit"]');
+    btn.textContent = '✓ Заявка отправлена!';
+    btn.style.background = '#2a7a4a';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = 'Отправить заявку <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+
+  // ── PHONE MASK ──
+  const phoneInput = document.getElementById('phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function() {
+      let v = this.value.replace(/\D/g, '');
+      if (v.startsWith('8')) v = '7' + v.slice(1);
+      if (v.startsWith('7')) {
+        const m = v.match(/^(\d)(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
+        if (m) this.value = '+7' + (m[2] ? ' (' + m[2] : '') + (m[3] ? ') ' + m[3] : '') + (m[4] ? '-' + m[4] : '') + (m[5] ? '-' + m[5] : '');
+      }
+    });
+  }
+</script>
+</body>
+</html>
