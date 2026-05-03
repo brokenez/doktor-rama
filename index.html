@@ -400,6 +400,7 @@
     /* Last row: 2 cards centered */
     .service-card:nth-child(4) { grid-column: 1; }
     .service-card:nth-child(5) { grid-column: 2; }
+      .service-card:nth-child(4), .service-card:nth-child(5) { justify-self: stretch; }
 
     .service-card {
       background: var(--navy-mid);
@@ -580,25 +581,25 @@
       gap: 0;
       position: relative;
       margin-top: 56px;
+      align-items: start;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(240,192,64,0.22), rgba(240,192,64,0.4), rgba(240,192,64,0.22));
+      z-index: 1;
     }
 
     .process-step {
       text-align: center;
       padding: 40px 20px;
       position: relative;
-    }
-
-    .process-step::after {
-      content: '';
-      position: absolute;
-      top: 52px;
-      right: -50%;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(240,192,64,0.4), rgba(240,192,64,0.1));
-    }
-
-    .process-step:last-child::after { display: none; }
+    }    .process-step::after { display: none; }
 
     .process-num {
       width: 56px;
@@ -720,20 +721,36 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 60px;
+      gap: 72px;
       flex-wrap: wrap;
     }
 
     .brand-item {
-      opacity: 0.3;
-      transition: opacity 0.3s;
+      opacity: 0.72;
+      transition: opacity 0.3s, transform 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: brightness(0) invert(1);
+      min-width: 140px;
+      flex: 0 0 140px;
     }
 
-    .brand-item:hover { opacity: 0.7; }
+    .brand-item img {
+      display: block;
+      width: 140px;
+      height: 40px;
+      max-width: none;
+      object-fit: contain;
+    }
+
+    .brand-item[title="Land Rover"] img {
+      filter: grayscale(1) brightness(1.65);
+    }
+
+    .brand-item:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
 
     /* ── TESTIMONIALS ── */
     #reviews { background: var(--navy-dark); }
@@ -1123,6 +1140,8 @@
       .hero-logo-wrap { width: 200px; height: 200px; }
       .hero-logo-img { width: 200px; height: 200px; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-card:nth-child(4),
+      .service-card:nth-child(5) { grid-column: auto; }
       .why-grid { grid-template-columns: 1fr; }
       .section-desc { max-width: 100%; }
       .process-steps { grid-template-columns: repeat(3, 1fr); }
@@ -1138,7 +1157,11 @@
     @media (max-width: 640px) {
       section { padding: 56px 20px; }
       nav { padding: 0 20px; }
-      .services-grid { grid-template-columns: 1fr; }
+      #hero { min-height: auto; }
+      .services-grid { grid-template-columns: 1fr; gap: 12px; }
+      .service-card:nth-child(4),
+      .service-card:nth-child(5) { grid-column: auto; }
+      .service-card { padding: 24px 20px; }
 
       /* Fix ALL headings overflow on mobile */
       .section-title {
@@ -1150,11 +1173,15 @@
         white-space: normal;
       }
       .hero-title {
-        font-size: clamp(38px, 10vw, 52px);
-        letter-spacing: 0.5px;
-        line-height: 0.95;
+        font-size: clamp(30px, 8.8vw, 44px);
+        letter-spacing: 0.3px;
+        line-height: 0.94;
         hyphens: none;
-        word-break: normal;
+        word-break: keep-all;
+        overflow-wrap: normal;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
       }
       .cta-title {
         font-size: clamp(24px, 6.5vw, 34px);
@@ -1164,14 +1191,41 @@
       }
 
       /* Hero fixes */
-      .hero-content { padding: 40px 20px; gap: 28px; }
-      .hero-logo-wrap { width: 160px; height: 160px; }
-      .hero-logo-img { width: 160px; height: 160px; }
-      .hero-logo-ring { inset: -12px; }
-      .hero-logo-ring-2 { inset: -28px; }
+      .hero-content { padding: 28px 20px 40px; gap: 24px; }
+      .hero-text { width: 100%; min-width: 0; }
+      .hero-label { width: 100%; justify-content: center; }
+      .hero-desc { width: 100%; overflow-wrap: break-word; }
+      .hero-logo-wrap { width: 132px; height: 132px; }
+      .hero-logo-img { width: 132px; height: 132px; }
+      .hero-logo-ring { inset: -10px; }
+      .hero-logo-ring-2 { inset: -20px; }
       .hero-desc { font-size: 15px; max-width: 100%; margin-left: auto; margin-right: auto; }
-      .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; padding-top: 28px; margin-top: 28px; }
-      .hero-stat-num { font-size: 32px; }
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        justify-content: stretch;
+        padding-top: 32px;
+        margin-top: 32px;
+      }
+      .hero-stat {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .hero-stat-num {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: clamp(42px, 11vw, 56px);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        line-height: 0.95;
+      }
+      .hero-stat-label {
+        font-size: 14px;
+        line-height: 1.35;
+      }
       .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; }
       .btn-primary, .btn-secondary { width: 100%; justify-content: center; box-sizing: border-box; }
 
@@ -1188,16 +1242,27 @@
         flex-direction: column;
         gap: 0;
       }
+      .process-steps::before { display: none; }
       .process-step {
         display: flex;
         align-items: flex-start;
         gap: 16px;
         text-align: left;
         padding: 20px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
         position: relative;
+        border-bottom: none;
       }
-      .process-step:last-child { border-bottom: none; }
+      .process-step::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 100vw;
+        height: 1px;
+        transform: translateX(-50%);
+        background: rgba(255,255,255,0.06);
+      }
+      .process-step:last-child::before { display: none; }
       .process-step::after { display: none; }
       .process-num {
         flex-shrink: 0;
@@ -1216,9 +1281,19 @@
       .form-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       #brands { padding: 40px 20px; }
-      .brands-list { gap: 28px; }
+      .brands-list { gap: 24px; }
+      .brand-item {
+        min-width: 120px;
+        flex: 0 0 calc(50% - 12px);
+      }
+      .brand-item img {
+        width: 120px;
+        height: 36px;
+      }
       #cta-banner { padding: 56px 20px; }
       footer { padding: 40px 20px 32px; }
+      .scroll-indicator { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin-inline: auto; }
+      .scroll-line { margin-inline: auto; }
     }
 
     /* ── REVEAL ANIMATIONS ── */
@@ -1244,20 +1319,20 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="file:///C:/Users/User/Downloads/index_1.html#hero" class="nav-logo">
-    <img src="file:///C:/Users/User/Downloads/logo.png" alt="Доктор Рама лого" onerror="this.style.display=&#39;none&#39;" style="display: none;">
+  <a href="#hero" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/brokenez/doktor-rama/main/logo.png" alt="Доктор Рама лого" onerror="this.style.display=&#39;none&#39;" style="display: none;">
     <div class="nav-logo-text">
       <div class="nav-logo-title">Доктор Рама</div>
       <div class="nav-logo-sub">Ремонт рам внедорожников</div>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="file:///C:/Users/User/Downloads/index_1.html#services">Услуги</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_1.html#why">О нас</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_1.html#process">Процесс</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_1.html#cases">Работы</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_1.html#reviews">Отзывы</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_1.html#contact" class="nav-cta">Записаться</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#why">О нас</a></li>
+    <li><a href="#process">Процесс</a></li>
+    <li><a href="#cases">Работы</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contact" class="nav-cta">Записаться</a></li>
   </ul>
   <div class="burger" id="burger" role="button" aria-label="Открыть меню" tabindex="0">
     <span></span><span></span><span></span>
@@ -1266,12 +1341,12 @@
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Мобильное меню">
-  <a href="file:///C:/Users/User/Downloads/index_1.html#services" onclick="closeMobileNav()">Услуги</a>
-  <a href="file:///C:/Users/User/Downloads/index_1.html#why" onclick="closeMobileNav()">О нас</a>
-  <a href="file:///C:/Users/User/Downloads/index_1.html#process" onclick="closeMobileNav()">Процесс</a>
-  <a href="file:///C:/Users/User/Downloads/index_1.html#cases" onclick="closeMobileNav()">Работы</a>
-  <a href="file:///C:/Users/User/Downloads/index_1.html#reviews" onclick="closeMobileNav()">Отзывы</a>
-  <a href="file:///C:/Users/User/Downloads/index_1.html#contact" onclick="closeMobileNav()" style="color:var(--yellow)">Записаться</a>
+  <a href="#services" onclick="closeMobileNav()">Услуги</a>
+  <a href="#why" onclick="closeMobileNav()">О нас</a>
+  <a href="#process" onclick="closeMobileNav()">Процесс</a>
+  <a href="#cases" onclick="closeMobileNav()">Работы</a>
+  <a href="#reviews" onclick="closeMobileNav()">Отзывы</a>
+  <a href="#contact" onclick="closeMobileNav()" style="color:var(--yellow)">Записаться</a>
 </div>
 
 <!-- HERO -->
@@ -1290,11 +1365,11 @@
         Единственный в регионе сервис, специализирующийся исключительно на ремонте, усилении и восстановлении рам внедорожников. Никаких компромиссов — только надёжный металл.
       </p>
       <div class="hero-actions">
-        <a href="file:///C:/Users/User/Downloads/index_1.html#contact" class="btn-primary">
+        <a href="#contact" class="btn-primary">
           Записаться на диагностику
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
         </a>
-        <a href="file:///C:/Users/User/Downloads/index_1.html#cases" class="btn-secondary">Смотреть работы</a>
+        <a href="#cases" class="btn-secondary">Смотреть работы</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -1315,7 +1390,7 @@
       <div class="hero-logo-wrap">
         <div class="hero-logo-ring"></div>
         <div class="hero-logo-ring-2"></div>
-        <img src="file:///C:/Users/User/Downloads/logo.png" alt="Доктор Рама" class="hero-logo-img">
+        <img src="https://raw.githubusercontent.com/brokenez/doktor-rama/main/logo.png" alt="Доктор Рама" class="hero-logo-img">
       </div>
     </div>
   </div>
@@ -1563,84 +1638,24 @@
   <div class="brands-inner">
     <p class="brands-label">Работаем с любыми марками внедорожников</p>
     <div class="brands-list">
-
-      <!-- SsangYong -->
-      <div class="brand-item" title="SsangYong">
-        <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:90px;height:30px">
-          <text x="2" y="28" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing="0.5">SSANGYONG</text>
-        </svg>
-      </div>
-
-      <!-- Toyota -->
       <div class="brand-item" title="Toyota">
-        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:30px">
-          <ellipse cx="50" cy="25" rx="48" ry="20" fill="none" stroke="white" stroke-width="3.5"></ellipse>
-          <ellipse cx="50" cy="25" rx="30" ry="12" fill="none" stroke="white" stroke-width="3.5"></ellipse>
-          <ellipse cx="50" cy="25" rx="12" ry="20" fill="none" stroke="white" stroke-width="3.5"></ellipse>
-        </svg>
+        <img src="./assets/toyota.svg" alt="Toyota" width="120" height="32" loading="lazy">
       </div>
-
-      <!-- Jeep -->
-      <div class="brand-item" title="Jeep">
-        <svg viewBox="0 0 80 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:27px">
-          <text x="2" y="26" font-family="Arial,sans-serif" font-size="22" font-weight="800" fill="white" letter-spacing="1">JEEP</text>
-        </svg>
-      </div>
-
-      <!-- Land Rover -->
-      <div class="brand-item" title="Land Rover">
-        <svg viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:26px">
-          <text x="2" y="25" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing="1.5">LAND ROVER</text>
-        </svg>
-      </div>
-
-      <!-- Nissan -->
       <div class="brand-item" title="Nissan">
-        <svg viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:30px">
-          <ellipse cx="50" cy="25" rx="48" ry="22" fill="none" stroke="white" stroke-width="3"></ellipse>
-          <line x1="2" y1="25" x2="98" y2="25" stroke="white" stroke-width="3"></line>
-          <text x="50" y="30" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">NISSAN</text>
-        </svg>
+        <img src="./assets/nissan.svg" alt="Nissan" width="120" height="32" loading="lazy">
       </div>
-
-      <!-- Mitsubishi -->
-      <div class="brand-item" title="Mitsubishi">
-        <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px">
-          <polygon points="25,2 34,17 25,17" fill="white"></polygon>
-          <polygon points="10,28 19,28 25,17 16,17" fill="white"></polygon>
-          <polygon points="40,28 31,28 25,17 34,17" fill="white"></polygon>
-        </svg>
+      <div class="brand-item" title="Mitsubishi Motors">
+        <img src="./assets/mitsubishi.svg" alt="Mitsubishi Motors" width="120" height="32" loading="lazy">
       </div>
-
-      <!-- Chevrolet -->
-      <div class="brand-item" title="Chevrolet">
-        <svg viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" style="width:52px;height:26px">
-          <path d="M2 12 H20 V8 H38 V12 H58 V18 H38 V22 H20 V18 H2 Z" fill="white"></path>
-        </svg>
+      <div class="brand-item" title="Jeep">
+        <img src="./assets/jeep.svg" alt="Jeep" width="120" height="32" loading="lazy">
       </div>
-
-      <!-- Ford -->
-      <div class="brand-item" title="Ford">
-        <svg viewBox="0 0 90 40" xmlns="http://www.w3.org/2000/svg" style="width:70px;height:30px">
-          <ellipse cx="45" cy="20" rx="43" ry="18" fill="none" stroke="white" stroke-width="2.5"></ellipse>
-          <text x="45" y="25" font-family="Arial,sans-serif" font-size="18" font-style="italic" font-weight="700" fill="white" text-anchor="middle" letter-spacing="1">Ford</text>
-        </svg>
+      <div class="brand-item" title="Land Rover">
+        <img src="./assets/landrover.svg" alt="Land Rover" width="120" height="32" loading="lazy">
       </div>
-
-      <!-- UAZ -->
-      <div class="brand-item" title="UAZ">
-        <svg viewBox="0 0 70 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:52px;height:27px">
-          <text x="2" y="26" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="white" letter-spacing="2">UAZ</text>
-        </svg>
-      </div>
-
-      <!-- Suzuki -->
       <div class="brand-item" title="Suzuki">
-        <svg viewBox="0 0 100 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:26px">
-          <text x="2" y="25" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="white" letter-spacing="1.5">SUZUKI</text>
-        </svg>
+        <img src="./assets/suzuki.svg" alt="Suzuki" width="120" height="32" loading="lazy">
       </div>
-
     </div>
   </div>
 </section>
@@ -1716,7 +1731,7 @@
       <h2 class="cta-title">РАМА ТРЕБУЕТ ВНИМАНИЯ?<br>НЕ ОТКЛАДЫВАЙ</h2>
       <p class="cta-sub">Бесплатная предварительная консультация по фото</p>
     </div>
-    <a href="file:///C:/Users/User/Downloads/index_1.html#contact" class="btn-dark">
+    <a href="#contact" class="btn-dark">
       Записаться сейчас
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
     </a>
@@ -1815,28 +1830,28 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="file:///C:/Users/User/Downloads/logo.png" alt="Доктор Рама">
+      <img src="https://raw.githubusercontent.com/brokenez/doktor-rama/main/logo.png" alt="Доктор Рама">
       <div class="footer-brand-name">Доктор Рама</div>
       <p>Специализированный сервис по ремонту, усилению и восстановлению рам внедорожников. Более 10 лет опыта. Гарантия на все работы.</p>
     </div>
     <div class="footer-col">
       <h4>Услуги</h4>
       <ul>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#services">Диагностика рамы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#services">Сварочные работы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#services">Усиление рамы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#services">Антикор</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#services">Полное восстановление</a></li>
+        <li><a href="#services">Диагностика рамы</a></li>
+        <li><a href="#services">Сварочные работы</a></li>
+        <li><a href="#services">Усиление рамы</a></li>
+        <li><a href="#services">Антикор</a></li>
+        <li><a href="#services">Полное восстановление</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Компания</h4>
       <ul>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#why">О нас</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#cases">Наши работы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#reviews">Отзывы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#process">Как работаем</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#contact">Контакты</a></li>
+        <li><a href="#why">О нас</a></li>
+        <li><a href="#cases">Наши работы</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#process">Как работаем</a></li>
+        <li><a href="#contact">Контакты</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1844,7 +1859,7 @@
       <ul>
         <li><a href="tel:+79536919957">+7 (953) 691-99-57</a></li>
         <li><a href="mailto:info@doktor-rama.ru">info@doktor-rama.ru</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_1.html#contact">2-й Южнопортовый проезд, 8с6</a></li>
+        <li><a href="#contact">2-й Южнопортовый проезд, 8с6</a></li>
         <li><a href="file:///C:/Users/User/Downloads/index_1.html#">Пн–Сб: 10:00–20:00</a></li>
       </ul>
     </div>
