@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/User/Downloads/index_2.html -->
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Доктор Рама — Ремонт рам внедорожников</title>
-  <meta name="description" content="Специализированный сервис по ремонту, усилению и восстановлению рам внедорожников. Опыт более 10 лет. Гарантия на все работы.">
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="./index_files/css2" rel="stylesheet">
+  <meta name="description" content="Специализированный сервис по ремонту, усилению и восстановлению рам внедорожников. Опыт более 10 лет. Гарантия на все работы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --navy: #0f2744;
@@ -26,13 +26,26 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       font-family: 'Exo 2', sans-serif;
       background: var(--navy-dark);
       color: var(--white);
       overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-dark);
+      padding-top: 76px;
+      width: 100%;
     }
 
     /* ── NAV ── */
@@ -129,16 +142,6 @@
     }
 
     /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      background: var(--navy-dark);
-      padding-top: 76px;
-    }
-
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -167,6 +170,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 80px 60px;
+      box-sizing: border-box;
     }
 
     .hero-label {
@@ -1128,17 +1132,36 @@
       nav { padding: 0 20px; }
       .services-grid { grid-template-columns: 1fr; }
 
+      /* Fix ALL headings overflow on mobile */
+      .section-title {
+        font-size: clamp(28px, 8vw, 40px);
+        letter-spacing: 1px;
+        word-break: break-word;
+        hyphens: auto;
+      }
+      .hero-title {
+        font-size: clamp(40px, 11vw, 56px);
+        letter-spacing: 1px;
+        line-height: 0.95;
+        word-break: break-word;
+      }
+      .cta-title {
+        font-size: clamp(26px, 7vw, 36px);
+        letter-spacing: 1px;
+        word-break: break-word;
+      }
+
       /* Hero fixes */
       .hero-content { padding: 40px 20px; gap: 28px; }
       .hero-logo-wrap { width: 160px; height: 160px; }
       .hero-logo-img { width: 160px; height: 160px; }
       .hero-logo-ring { inset: -12px; }
       .hero-logo-ring-2 { inset: -28px; }
-      .hero-title { letter-spacing: 2px; }
-      .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
+      .hero-desc { font-size: 15px; max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; padding-top: 28px; margin-top: 28px; }
       .hero-stat-num { font-size: 32px; }
-      .hero-actions { flex-direction: column; align-items: center; gap: 12px; }
-      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; box-sizing: border-box; }
 
       /* Why section */
       .why-badge-main { padding: 28px 20px; }
@@ -1209,20 +1232,20 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="file:///C:/Users/User/Downloads/index_2.html#hero" class="nav-logo">
-    <img src="file:///C:/Users/User/Downloads/logo.png" alt="Доктор Рама лого">
+  <a href="#hero" class="nav-logo">
+    <img src="./logo.png" alt="Доктор Рама лого" onerror="this.style.display='none'" />
     <div class="nav-logo-text">
       <div class="nav-logo-title">Доктор Рама</div>
       <div class="nav-logo-sub">Ремонт рам внедорожников</div>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="file:///C:/Users/User/Downloads/index_2.html#services">Услуги</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_2.html#why">О нас</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_2.html#process">Процесс</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_2.html#cases">Работы</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_2.html#reviews">Отзывы</a></li>
-    <li><a href="file:///C:/Users/User/Downloads/index_2.html#contact" class="nav-cta">Записаться</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#why">О нас</a></li>
+    <li><a href="#process">Процесс</a></li>
+    <li><a href="#cases">Работы</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contact" class="nav-cta">Записаться</a></li>
   </ul>
   <div class="burger" id="burger" role="button" aria-label="Открыть меню" tabindex="0">
     <span></span><span></span><span></span>
@@ -1231,12 +1254,12 @@
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Мобильное меню">
-  <a href="file:///C:/Users/User/Downloads/index_2.html#services" onclick="closeMobileNav()">Услуги</a>
-  <a href="file:///C:/Users/User/Downloads/index_2.html#why" onclick="closeMobileNav()">О нас</a>
-  <a href="file:///C:/Users/User/Downloads/index_2.html#process" onclick="closeMobileNav()">Процесс</a>
-  <a href="file:///C:/Users/User/Downloads/index_2.html#cases" onclick="closeMobileNav()">Работы</a>
-  <a href="file:///C:/Users/User/Downloads/index_2.html#reviews" onclick="closeMobileNav()">Отзывы</a>
-  <a href="file:///C:/Users/User/Downloads/index_2.html#contact" onclick="closeMobileNav()" style="color:var(--yellow)">Записаться</a>
+  <a href="#services" onclick="closeMobileNav()">Услуги</a>
+  <a href="#why" onclick="closeMobileNav()">О нас</a>
+  <a href="#process" onclick="closeMobileNav()">Процесс</a>
+  <a href="#cases" onclick="closeMobileNav()">Работы</a>
+  <a href="#reviews" onclick="closeMobileNav()">Отзывы</a>
+  <a href="#contact" onclick="closeMobileNav()" style="color:var(--yellow)">Записаться</a>
 </div>
 
 <!-- HERO -->
@@ -1247,19 +1270,19 @@
     <div class="hero-text">
       <div class="hero-label">Специализированный сервис</div>
       <h1 class="hero-title">
-        РЕМОНТ<br>
-        <span class="accent">РАМ</span><br>
+        РЕМОНТ<br />
+        <span class="accent">РАМ</span><br />
         ВНЕДОРОЖНИКОВ
       </h1>
       <p class="hero-desc">
         Единственный в регионе сервис, специализирующийся исключительно на ремонте, усилении и восстановлении рам внедорожников. Никаких компромиссов — только надёжный металл.
       </p>
       <div class="hero-actions">
-        <a href="file:///C:/Users/User/Downloads/index_2.html#contact" class="btn-primary">
+        <a href="#contact" class="btn-primary">
           Записаться на диагностику
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="file:///C:/Users/User/Downloads/index_2.html#cases" class="btn-secondary">Смотреть работы</a>
+        <a href="#cases" class="btn-secondary">Смотреть работы</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -1280,7 +1303,7 @@
       <div class="hero-logo-wrap">
         <div class="hero-logo-ring"></div>
         <div class="hero-logo-ring-2"></div>
-        <img src="file:///C:/Users/User/Downloads/logo.png" alt="Доктор Рама" class="hero-logo-img">
+        <img src="./logo.png" alt="Доктор Рама" class="hero-logo-img" />
       </div>
     </div>
   </div>
@@ -1303,11 +1326,11 @@
       <div class="service-card reveal">
         <div class="service-num">01</div>
         <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="18" width="36" height="6" rx="2" stroke="#f0c040" stroke-width="2"></rect>
-          <rect x="6" y="28" width="36" height="6" rx="2" stroke="#f0c040" stroke-width="2"></rect>
-          <circle cx="12" cy="21" r="2" fill="#f0c040"></circle>
-          <circle cx="12" cy="31" r="2" fill="#f0c040"></circle>
-          <path d="M6 21h6M18 21h24M6 31h6M18 31h24" stroke="#f0c040" stroke-width="1.5"></path>
+          <rect x="6" y="18" width="36" height="6" rx="2" stroke="#f0c040" stroke-width="2"/>
+          <rect x="6" y="28" width="36" height="6" rx="2" stroke="#f0c040" stroke-width="2"/>
+          <circle cx="12" cy="21" r="2" fill="#f0c040"/>
+          <circle cx="12" cy="31" r="2" fill="#f0c040"/>
+          <path d="M6 21h6M18 21h24M6 31h6M18 31h24" stroke="#f0c040" stroke-width="1.5"/>
         </svg>
         <div class="service-title">Диагностика рамы</div>
         <p class="service-desc">Полный визуальный и инструментальный осмотр рамы. Выявляем трещины, деформации, коррозию и скрытые повреждения. Отчёт с фотофиксацией.</p>
@@ -1317,10 +1340,10 @@
       <div class="service-card reveal reveal-delay-1">
         <div class="service-num">02</div>
         <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 24L16 16L24 24L32 16L40 24" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
-          <path d="M14 30L22 22M26 30L34 22" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
-          <circle cx="28" cy="34" r="3" fill="none" stroke="#f0c040" stroke-width="2"></circle>
-          <path d="M30 34l5 5" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M8 24L16 16L24 24L32 16L40 24" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 30L22 22M26 30L34 22" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="28" cy="34" r="3" fill="none" stroke="#f0c040" stroke-width="2"/>
+          <path d="M30 34l5 5" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <div class="service-title">Сварочные работы</div>
         <p class="service-desc">Профессиональная аргонодуговая и полуавтоматическая сварка. Заварка трещин, вварка усилителей, восстановление геометрии рамы после ДТП.</p>
@@ -1330,11 +1353,11 @@
       <div class="service-card reveal reveal-delay-2">
         <div class="service-num">03</div>
         <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="8" y="20" width="32" height="8" rx="2" stroke="#f0c040" stroke-width="2"></rect>
-          <rect x="4" y="22" width="6" height="4" rx="1" stroke="#f0c040" stroke-width="2"></rect>
-          <rect x="38" y="22" width="6" height="4" rx="1" stroke="#f0c040" stroke-width="2"></rect>
-          <path d="M14 20v-4M20 20v-6M26 20v-4M34 20v-6" stroke="#f0c040" stroke-width="1.5" stroke-linecap="round"></path>
-          <path d="M14 28v4M20 28v6M26 28v4M34 28v6" stroke="#f0c040" stroke-width="1.5" stroke-linecap="round"></path>
+          <rect x="8" y="20" width="32" height="8" rx="2" stroke="#f0c040" stroke-width="2"/>
+          <rect x="4" y="22" width="6" height="4" rx="1" stroke="#f0c040" stroke-width="2"/>
+          <rect x="38" y="22" width="6" height="4" rx="1" stroke="#f0c040" stroke-width="2"/>
+          <path d="M14 20v-4M20 20v-6M26 20v-4M34 20v-6" stroke="#f0c040" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M14 28v4M20 28v6M26 28v4M34 28v6" stroke="#f0c040" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <div class="service-title">Усиление рамы</div>
         <p class="service-desc">Установка дополнительных усилителей и косынок. Подготовка рамы к езде в тяжёлом бездорожье, буксировке и повышенным нагрузкам.</p>
@@ -1344,9 +1367,9 @@
       <div class="service-card reveal reveal-delay-3">
         <div class="service-num">04</div>
         <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 36L8 40M36 12L40 8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
-          <rect x="14" y="14" width="20" height="20" rx="3" stroke="#f0c040" stroke-width="2"></rect>
-          <path d="M20 24h8M24 20v8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M12 36L8 40M36 12L40 8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <rect x="14" y="14" width="20" height="20" rx="3" stroke="#f0c040" stroke-width="2"/>
+          <path d="M20 24h8M24 20v8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <div class="service-title">Правка геометрии</div>
         <p class="service-desc">Восстановление геометрических размеров рамы после аварий и деформаций. Используем профессиональный стапель с компьютерным контролем.</p>
@@ -1356,10 +1379,10 @@
       <div class="service-card reveal reveal-delay-4">
         <div class="service-num">05</div>
         <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 30C10 22 14 16 24 16C34 16 38 22 38 30" stroke="#f0c040" stroke-width="2"></path>
-          <path d="M8 32h32" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
-          <path d="M16 32l-2 8M32 32l2 8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
-          <circle cx="24" cy="32" r="3" fill="none" stroke="#f0c040" stroke-width="2"></circle>
+          <path d="M10 30C10 22 14 16 24 16C34 16 38 22 38 30" stroke="#f0c040" stroke-width="2"/>
+          <path d="M8 32h32" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 32l-2 8M32 32l2 8" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="32" r="3" fill="none" stroke="#f0c040" stroke-width="2"/>
         </svg>
         <div class="service-title">Антикоррозийная обработка</div>
         <p class="service-desc">Комплексная защита рамы от ржавчины после ремонта. Пескоструйная очистка, грунтование, нанесение антикора и защитного покрытия.</p>
@@ -1369,9 +1392,9 @@
       <div class="service-card reveal reveal-delay-5">
         <div class="service-num">06</div>
         <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="24" cy="24" r="14" stroke="#f0c040" stroke-width="2"></circle>
-          <path d="M24 16v8l5 5" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
-          <path d="M14 8l-4-4M34 8l4-4" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path>
+          <circle cx="24" cy="24" r="14" stroke="#f0c040" stroke-width="2"/>
+          <path d="M24 16v8l5 5" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 8l-4-4M34 8l4-4" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <div class="service-title">Полное восстановление</div>
         <p class="service-desc">Комплексный ремонт рамы «под ключ»: диагностика, сварка, правка геометрии, покраска и антикор. Возвращаем раму к заводским параметрам.</p>
@@ -1415,7 +1438,7 @@
       <ul class="why-list">
         <li class="why-item reveal reveal-delay-1">
           <div class="why-item-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <div class="why-item-body">
             <h3>Узкая специализация</h3>
@@ -1424,7 +1447,7 @@
         </li>
         <li class="why-item reveal reveal-delay-2">
           <div class="why-item-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
           </div>
           <div class="why-item-body">
             <h3>Прозрачная диагностика</h3>
@@ -1433,7 +1456,7 @@
         </li>
         <li class="why-item reveal reveal-delay-3">
           <div class="why-item-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="why-item-body">
             <h3>Гарантия на все работы</h3>
@@ -1442,7 +1465,7 @@
         </li>
         <li class="why-item reveal reveal-delay-4">
           <div class="why-item-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="why-item-body">
             <h3>Чёткие сроки</h3>
@@ -1511,7 +1534,7 @@
       <!-- Case 1 - Large -->
       <div class="case-card large reveal">
         <div class="case-placeholder">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="30" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"></rect><rect x="10" y="46" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"></rect><circle cx="22" cy="36" r="3" fill="#f0c040"></circle><circle cx="22" cy="52" r="3" fill="#f0c040"></circle></svg>
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="30" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"/><rect x="10" y="46" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"/><circle cx="22" cy="36" r="3" fill="#f0c040"/><circle cx="22" cy="52" r="3" fill="#f0c040"/></svg>
         </div>
         <div class="case-card-overlay">
           <div class="case-tag">Toyota Land Cruiser 80</div>
@@ -1522,7 +1545,7 @@
       <!-- Case 2 -->
       <div class="case-card reveal reveal-delay-1">
         <div class="case-placeholder">
-          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M10 30c0-6 4-12 20-12s20 6 20 12" stroke="#f0c040" stroke-width="2"></path><path d="M8 32h44" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path></svg>
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M10 30c0-6 4-12 20-12s20 6 20 12" stroke="#f0c040" stroke-width="2"/><path d="M8 32h44" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="case-card-overlay">
           <div class="case-tag">Jeep Wrangler JK</div>
@@ -1533,7 +1556,7 @@
       <!-- Case 3 -->
       <div class="case-card reveal reveal-delay-2">
         <div class="case-placeholder">
-          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="10" y="22" width="40" height="10" rx="2" stroke="#f0c040" stroke-width="2"></rect><rect x="10" y="34" width="40" height="10" rx="2" stroke="#f0c040" stroke-width="2"></rect></svg>
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><rect x="10" y="22" width="40" height="10" rx="2" stroke="#f0c040" stroke-width="2"/><rect x="10" y="34" width="40" height="10" rx="2" stroke="#f0c040" stroke-width="2"/></svg>
         </div>
         <div class="case-card-overlay">
           <div class="case-tag">Nissan Patrol Y61</div>
@@ -1544,7 +1567,7 @@
       <!-- Case 4 -->
       <div class="case-card reveal reveal-delay-3">
         <div class="case-placeholder">
-          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M20 40L10 50M40 20L50 10" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path><rect x="18" y="18" width="24" height="24" rx="3" stroke="#f0c040" stroke-width="2"></rect></svg>
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none"><path d="M20 40L10 50M40 20L50 10" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/><rect x="18" y="18" width="24" height="24" rx="3" stroke="#f0c040" stroke-width="2"/></svg>
         </div>
         <div class="case-card-overlay">
           <div class="case-tag">Land Rover Defender</div>
@@ -1555,7 +1578,7 @@
       <!-- Case 5 - Large -->
       <div class="case-card large reveal reveal-delay-4">
         <div class="case-placeholder">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="#f0c040" stroke-width="1.5"></circle><path d="M40 20v20l12 12" stroke="#f0c040" stroke-width="2" stroke-linecap="round"></path></svg>
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="28" stroke="#f0c040" stroke-width="1.5"/><path d="M40 20v20l12 12" stroke="#f0c040" stroke-width="2" stroke-linecap="round"/></svg>
         </div>
         <div class="case-card-overlay">
           <div class="case-tag">Mitsubishi Pajero 3</div>
@@ -1592,11 +1615,11 @@
     <div class="reviews-grid">
       <div class="review-card reveal">
         <div class="review-stars">
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <p class="review-text">Привёз Prado 150 с трещиной в раме после серьёзного диагонального скручивания. Думал — машине конец. Ребята сделали диагностику, показали всё на фото, объяснили план работ. Результат превзошёл ожидания — рама как новая, сварные швы аккуратнее заводских.</p>
         <div class="review-author">
@@ -1610,11 +1633,11 @@
 
       <div class="review-card reveal reveal-delay-1">
         <div class="review-stars">
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <p class="review-text">Усиливали раму Дефендера под экспедиционные задачи. Обсудили все нюансы, предложили несколько вариантов усиления с разной ценой. Работу сделали быстро и качественно. Машина прошла уже 30 000 км по тяжёлому бездорожью — без нареканий.</p>
         <div class="review-author">
@@ -1628,11 +1651,11 @@
 
       <div class="review-card reveal reveal-delay-2">
         <div class="review-stars">
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
         <p class="review-text">Обратился с гнилой рамой Patrol'а. Думал придётся покупать новую — цены кусаются. Доктор Рама полностью восстановили раму с заменой сгнивших секций, сделали пескоструй и антикор. Цена разумная, гарантия год. Очень доволен.</p>
         <div class="review-author">
@@ -1651,12 +1674,12 @@
 <section id="cta-banner">
   <div class="cta-inner">
     <div>
-      <h2 class="cta-title">РАМА ТРЕБУЕТ ВНИМАНИЯ?<br>НЕ ОТКЛАДЫВАЙ</h2>
+      <h2 class="cta-title">РАМА ТРЕБУЕТ ВНИМАНИЯ?<br />НЕ ОТКЛАДЫВАЙ</h2>
       <p class="cta-sub">Бесплатная предварительная консультация по фото</p>
     </div>
-    <a href="file:///C:/Users/User/Downloads/index_2.html#contact" class="btn-dark">
+    <a href="#contact" class="btn-dark">
       Записаться сейчас
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
 </section>
@@ -1671,7 +1694,7 @@
       <div class="contact-info">
         <div class="contact-item reveal">
           <div class="contact-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.69A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14h.01z"></path></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.69A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14h.01z"/></svg>
           </div>
           <div class="contact-item-body">
             <label>Телефон</label>
@@ -1680,7 +1703,7 @@
         </div>
         <div class="contact-item reveal reveal-delay-1">
           <div class="contact-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div class="contact-item-body">
             <label>Адрес</label>
@@ -1689,16 +1712,16 @@
         </div>
         <div class="contact-item reveal reveal-delay-2">
           <div class="contact-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="contact-item-body">
             <label>Режим работы</label>
-            <p>Пн–Сб: 9:00–19:00<br>Вс: по записи</p>
+            <p>Пн–Сб: 9:00–19:00<br />Вс: по записи</p>
           </div>
         </div>
         <div class="contact-item reveal reveal-delay-3">
           <div class="contact-item-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c040" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
           <div class="contact-item-body">
             <label>Email</label>
@@ -1711,16 +1734,16 @@
         <div class="form-row">
           <div class="form-group">
             <label for="name">Ваше имя *</label>
-            <input type="text" id="name" placeholder="Иван Иванов" required="" aria-required="true">
+            <input type="text" id="name" placeholder="Иван Иванов" required aria-required="true" />
           </div>
           <div class="form-group">
             <label for="phone">Телефон *</label>
-            <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required="" aria-required="true" autocomplete="tel">
+            <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required aria-required="true" autocomplete="tel" />
           </div>
         </div>
         <div class="form-group">
           <label for="car">Марка и модель автомобиля</label>
-          <input type="text" id="car" placeholder="Например: Toyota Land Cruiser 80">
+          <input type="text" id="car" placeholder="Например: Toyota Land Cruiser 80" />
         </div>
         <div class="form-group">
           <label for="service">Необходимая услуга</label>
@@ -1742,7 +1765,7 @@
         <div class="form-submit">
           <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
             Отправить заявку
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
       </form>
@@ -1754,29 +1777,29 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="file:///C:/Users/User/Downloads/logo.png" alt="Доктор Рама">
+      <img src="./logo.png" alt="Доктор Рама" />
       <div class="footer-brand-name">Доктор Рама</div>
       <p>Специализированный сервис по ремонту, усилению и восстановлению рам внедорожников. Более 10 лет опыта. Гарантия на все работы.</p>
     </div>
     <div class="footer-col">
       <h4>Услуги</h4>
       <ul>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#services">Диагностика рамы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#services">Сварочные работы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#services">Усиление рамы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#services">Правка геометрии</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#services">Антикор</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#services">Полное восстановление</a></li>
+        <li><a href="#services">Диагностика рамы</a></li>
+        <li><a href="#services">Сварочные работы</a></li>
+        <li><a href="#services">Усиление рамы</a></li>
+        <li><a href="#services">Правка геометрии</a></li>
+        <li><a href="#services">Антикор</a></li>
+        <li><a href="#services">Полное восстановление</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Компания</h4>
       <ul>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#why">О нас</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#cases">Наши работы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#reviews">Отзывы</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#process">Как работаем</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#contact">Контакты</a></li>
+        <li><a href="#why">О нас</a></li>
+        <li><a href="#cases">Наши работы</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#process">Как работаем</a></li>
+        <li><a href="#contact">Контакты</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1784,22 +1807,22 @@
       <ul>
         <li><a href="tel:+79001234567">+7 (900) 123-45-67</a></li>
         <li><a href="mailto:info@doktor-rama.ru">info@doktor-rama.ru</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#contact">ул. Промышленная, 15</a></li>
-        <li><a href="file:///C:/Users/User/Downloads/index_2.html#">Пн–Сб: 9:00–19:00</a></li>
+        <li><a href="#contact">ул. Промышленная, 15</a></li>
+        <li><a href="#">Пн–Сб: 9:00–19:00</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2025 Доктор Рама. Все права защищены.</span>
     <div class="social-links">
-      <a href="file:///C:/Users/User/Downloads/index_2.html#" class="social-link" aria-label="ВКонтакте">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.726-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.71-.576.71z"></path></svg>
+      <a href="#" class="social-link" aria-label="ВКонтакте">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.726-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .643.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.474-.085.71-.576.71z"/></svg>
       </a>
-      <a href="file:///C:/Users/User/Downloads/index_2.html#" class="social-link" aria-label="Telegram">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.947l-2.94-.92c-.64-.203-.654-.64.136-.954l11.566-4.461c.537-.194 1.006.131.872.609z"></path></svg>
+      <a href="#" class="social-link" aria-label="Telegram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.947l-2.94-.92c-.64-.203-.654-.64.136-.954l11.566-4.461c.537-.194 1.006.131.872.609z"/></svg>
       </a>
-      <a href="file:///C:/Users/User/Downloads/index_2.html#" class="social-link" aria-label="WhatsApp">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+      <a href="#" class="social-link" aria-label="WhatsApp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#a8b8cc"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </a>
     </div>
   </div>
@@ -1877,6 +1900,5 @@
     });
   }
 </script>
-
-
-</body></html>
+</body>
+</html>
