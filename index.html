@@ -730,50 +730,11 @@
     .case-placeholder svg { opacity: 0.15; }
 
     /* ── BRANDS ── */
-    #brands { background: var(--navy); padding: 60px 0; }
 
-    .brands-inner {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding-inline: 60px;
-    }
 
-    .brands-label {
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
 
-    .brands-list {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 72px;
-      flex-wrap: wrap;
-    }
 
-    .brand-item {
-      opacity: 0.72;
-      transition: opacity 0.3s, transform 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 140px;
-      flex: 0 0 140px;
-    }
 
-    .brand-item img,
-    .brand-logo {
-      display: block;
-      width: 140px;
-      height: 40px;
-      max-width: none;
-      object-fit: contain;
-      color: #9ca3af;
-    }
 
     .brand-logo-nissan {
       width: 120px;
@@ -786,10 +747,6 @@
       color: #9ca3af;
     }
 
-    .brand-item:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-    }
 
     /* ── TESTIMONIALS ── */
     #reviews { background: var(--navy-dark); }
@@ -1282,18 +1239,6 @@
       .reviews-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-inline: 20px; }
-      #brands { padding: 40px 0; }
-      .brands-inner { padding-inline: 20px; }
-      .brands-list { gap: 24px; }
-      .brand-item {
-        min-width: 120px;
-        flex: 0 0 calc(50% - 12px);
-      }
-      .brand-item img,
-      .brand-logo {
-        width: 120px;
-        height: 36px;
-      }
       .brand-logo-landrover {
         width: 126px;
         height: 36px;
@@ -1641,41 +1586,6 @@
   </div>
 </section>
 
-<!-- BRANDS -->
-<section id="brands">
-  <div class="brands-inner">
-    <p class="brands-label">Работаем с любыми марками внедорожников</p>
-    <div class="brands-list">
-
-      <div class="brand-item" title="Toyota">
-        <img src="./assets/toyota.svg" alt="Toyota" width="120" height="32" loading="lazy">
-      </div>
-
-      <div class="brand-item" title="Nissan">
-        <svg class="brand-logo brand-logo-nissan" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-label="Nissan" role="img">
-          <path fill="currentColor" d="M20.576 14.955l-.01.028c-1.247 3.643-4.685 6.086-8.561 6.086-3.876 0-7.32-2.448-8.562-6.09l-.01-.029H.71v.329l1.133.133c.7.08.847.39 1.038.78l.048.096c1.638 3.495 5.204 5.752 9.08 5.752 3.877 0 7.443-2.257 9.081-5.747l.048-.095c.19-.39.338-.7 1.038-.781l1.134-.134v-.328zM3.443 9.012c1.247-3.643 4.686-6.09 8.562-6.09 3.876 0 7.319 2.447 8.562 6.09l.01.028h2.728v-.328l-1.134-.133c-.7-.081-.847-.39-1.038-.781l-.047-.096C19.448 4.217 15.88 1.96 12.005 1.96c-3.881 0-7.443 2.257-9.081 5.752l-.048.095c-.19.39-.338.7-1.038.781l-1.133.133v.329h2.724z"/>
-        </svg>
-      </div>
-
-      <div class="brand-item" title="Mitsubishi">
-        <img src="./assets/mitsubishi.svg" alt="Mitsubishi" width="120" height="32" loading="lazy">
-      </div>
-
-      <div class="brand-item" title="Jeep">
-        <img src="./assets/jeep.svg" alt="Jeep" width="120" height="32" loading="lazy">
-      </div>
-
-      <div class="brand-item" title="Land Rover">
-        <img src="./assets/landrover.svg" alt="Land Rover" width="120" height="32" loading="lazy">
-      </div>
-
-      <div class="brand-item" title="Suzuki">
-        <img src="./assets/suzuki.svg" alt="Suzuki" width="120" height="32" loading="lazy">
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- REVIEWS -->
 <section id="reviews">
