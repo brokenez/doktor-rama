@@ -1875,36 +1875,23 @@
   }, { passive: true });
 
   // ── FORM ──
-  const TG_TOKEN = '8719643471:AAHYCYnDxojGy3REvl3bBnXiVJLo9O3UmJY';
-  const TG_CHAT  = '362994523';
-
   async function handleSubmit(e) {
     e.preventDefault();
-    const btn  = e.target.querySelector('[type="submit"]');
+    const btn     = e.target.querySelector('[type="submit"]');
     const name    = document.getElementById('name').value.trim();
     const phone   = document.getElementById('phone').value.trim();
     const car     = document.getElementById('car').value.trim();
     const service = document.getElementById('service').value.trim();
     const message = document.getElementById('message').value.trim();
 
-    const text = [
-      '🔧 <b>Новая заявка — Доктор Рама</b>',
-      '',
-      `👤 <b>Имя:</b> ${name}`,
-      `📞 <b>Телефон:</b> ${phone}`,
-      car     ? `🚙 <b>Автомобиль:</b> ${car}`         : null,
-      service ? `🛠 <b>Услуга:</b> ${service}`          : null,
-      message ? `💬 <b>Сообщение:</b> ${message}`       : null,
-    ].filter(Boolean).join('\n');
-
     btn.textContent = 'Отправляем...';
     btn.disabled = true;
 
     try {
-      const res = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      const res = await fetch('/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' })
+        body: JSON.stringify({ name, phone, car, service, message })
       });
       const data = await res.json();
       if (data.ok) {
