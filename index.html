@@ -1369,12 +1369,12 @@
   <div class="hero-content">
     <div class="hero-text">
       <div class="section-label">Специализированный сервис</div>
-      <h1 class="hero-title">
+      <h1 class="hero-title" id="hero-title-el">
         РЕМОНТ<br>
         <span class="accent">РАМ</span><br>
         ВНЕДОРОЖНИКОВ
       </h1>
-      <p class="hero-desc">
+      <p class="hero-desc" id="hero-desc-el">
         Единственный в регионе сервис, специализирующийся исключительно на ремонте, усилении и восстановлении рам внедорожников. Никаких компромиссов — только надёжный металл.
       </p>
       <div class="hero-actions">
@@ -1386,16 +1386,16 @@
       </div>
       <div class="hero-stats">
         <div>
-          <div class="hero-stat-num">10+</div>
-          <div class="hero-stat-label">Лет опыта</div>
+          <div class="hero-stat-num" id="stat1-num-el">10+</div>
+          <div class="hero-stat-label" id="stat1-label-el">Лет опыта</div>
         </div>
         <div>
-          <div class="hero-stat-num">500+</div>
-          <div class="hero-stat-label">Отремонтировано рам</div>
+          <div class="hero-stat-num" id="stat2-num-el">500+</div>
+          <div class="hero-stat-label" id="stat2-label-el">Отремонтировано рам</div>
         </div>
         <div>
-          <div class="hero-stat-num">100%</div>
-          <div class="hero-stat-label">Гарантия на сварку</div>
+          <div class="hero-stat-num" id="stat3-num-el">100%</div>
+          <div class="hero-stat-label" id="stat3-label-el">Гарантия на сварку</div>
         </div>
       </div>
     </div>
@@ -1421,7 +1421,7 @@
     <p class="section-desc">Полный спектр работ по рамам внедорожников: от диагностики до полного восстановления. Работаем с любыми марками и годами выпуска.</p>
   </div>
   <div class="container">
-    <div class="services-grid">
+    <div class="services-grid" id="services-grid">
 
       <div class="service-card reveal">
         <div class="service-num">01</div>
@@ -1582,7 +1582,7 @@
     <h2 class="section-title">НАШИ <span class="accent">РАБОТЫ</span></h2>
     <p class="section-desc">Реальные примеры ремонтов. От небольших трещин до полного восстановления после серьёзных аварий.</p>
 
-    <div class="cases-grid">
+    <div class="cases-grid" id="cases-grid">
       <!-- Case 1 - Large -->
       <div class="case-card large reveal">
         <div class="case-placeholder">
@@ -1683,7 +1683,7 @@
     <div class="section-label">Отзывы клиентов</div>
     <h2 class="section-title">ЧТО ГОВОРЯТ <span class="accent">КЛИЕНТЫ</span></h2>
 
-    <div class="reviews-grid">
+    <div class="reviews-grid" id="reviews-grid">
       <div class="review-card reveal">
         <div class="review-stars">
           <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
@@ -1983,7 +1983,87 @@
     }
   }
 
-  // ── PHONE MASK ──
+  // ── DYNAMIC DATA LOADING ──
+  async function loadSiteData() {
+    try {
+      const res = await fetch('/api/data')
+      const data = await res.json()
+
+      // Hero
+      if (data.hero) {
+        const h = data.hero
+        if (h.title) {
+          const parts = h.title.split(' ')
+          const mid = Math.ceil(parts.length / 2)
+          document.getElementById('hero-title-el').innerHTML =
+            parts.slice(0, mid).join(' ') + '<br><span class="accent">' + (parts[mid] || '') + '</span><br>' + parts.slice(mid + 1).join(' ')
+        }
+        if (h.desc) document.getElementById('hero-desc-el').textContent = h.desc
+        if (h.stat1_num) document.getElementById('stat1-num-el').textContent = h.stat1_num
+        if (h.stat1_label) document.getElementById('stat1-label-el').textContent = h.stat1_label
+        if (h.stat2_num) document.getElementById('stat2-num-el').textContent = h.stat2_num
+        if (h.stat2_label) document.getElementById('stat2-label-el').textContent = h.stat2_label
+        if (h.stat3_num) document.getElementById('stat3-num-el').textContent = h.stat3_num
+        if (h.stat3_label) document.getElementById('stat3-label-el').textContent = h.stat3_label
+      }
+
+      // Services
+      if (data.services && data.services.length) {
+        const delays = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3', 'reveal-delay-4']
+        document.getElementById('services-grid').innerHTML = data.services.map((s, i) => `
+          <div class="service-card reveal ${delays[i] || ''}">
+            <div class="service-num">0${i + 1}</div>
+            <div class="service-title">${s.title}</div>
+            <p class="service-desc">${s.desc}</p>
+            <div class="service-price">${s.price}</div>
+          </div>
+        `).join('')
+        document.querySelectorAll('#services-grid .reveal').forEach(el => revealObserver.observe(el))
+      }
+
+      // Cases
+      if (data.cases && data.cases.length) {
+        const delays = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3', 'reveal-delay-4']
+        document.getElementById('cases-grid').innerHTML = data.cases.map((c, i) => `
+          <div class="case-card ${c.large ? 'large' : ''} reveal ${delays[i] || ''}">
+            ${c.image
+              ? `<div class="case-card-bg" style="background-image:url('${c.image}');position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.6s ease;"></div>`
+              : `<div class="case-placeholder"><svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="10" y="30" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"/><rect x="10" y="46" width="60" height="12" rx="3" stroke="#f0c040" stroke-width="2"/></svg></div>`
+            }
+            <div class="case-card-overlay">
+              <div class="case-tag">${c.tag}</div>
+              <div class="case-title">${c.title}</div>
+            </div>
+          </div>
+        `).join('')
+        document.querySelectorAll('#cases-grid .reveal').forEach(el => revealObserver.observe(el))
+      }
+
+      // Reviews
+      if (data.reviews && data.reviews.length) {
+        const delays = ['', 'reveal-delay-1', 'reveal-delay-2']
+        document.getElementById('reviews-grid').innerHTML = data.reviews.map((r, i) => `
+          <div class="review-card reveal ${delays[i] || ''}">
+            <div class="review-stars">${'<span class="review-star">★</span>'.repeat(r.stars || 5)}</div>
+            <p class="review-text">${r.text}</p>
+            <div class="review-author">
+              <div class="review-avatar">${r.name.charAt(0)}</div>
+              <div>
+                <div class="review-name">${r.name}</div>
+                <div class="review-car">${r.car}</div>
+              </div>
+            </div>
+          </div>
+        `).join('')
+        document.querySelectorAll('#reviews-grid .reveal').forEach(el => revealObserver.observe(el))
+      }
+    } catch (e) {
+      console.log('Data load error:', e)
+    }
+  }
+
+  loadSiteData()
+
   const phoneInput = document.getElementById('phone');
   if (phoneInput) {
     phoneInput.addEventListener('input', function() {
