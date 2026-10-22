@@ -106,6 +106,8 @@
       transition: all 0.2s;
     }
     .add-btn:hover { border-color: #f0c040; color: #f0c040; }
+    .field-hint { margin-top: 6px; color: #94a3b8; font-size: 13px; }
+    .btn:disabled { opacity: 0.6; cursor: wait; }
 
     /* IMAGE UPLOAD */
     .image-upload-area {
@@ -225,9 +227,10 @@
         <button class="add-btn" onclick="addService()">+ Добавить услугу</button>
         <br>
         <div class="save-bar">
-          <button class="btn btn-yellow" onclick="saveServices()">Сохранить все</button>
-          <span class="saved-msg" id="services-saved">✓ Сохранено</span>
+          <button class="btn btn-yellow" id="save-services-btn" onclick="saveServices()">Сохранить услуги и цены</button>
+          <span class="saved-msg" id="services-saved" role="status">✓ Сохранено</span>
         </div>
+        <p class="error-msg" id="services-error" role="alert"></p>
       </div>
 
       <!-- CASES PAGE -->
@@ -355,9 +358,13 @@
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>
           </button>
         </div>
-        <div class="field-group"><label>Название</label><input type="text" value="${s.title}" oninput="siteData.services[${i}].title=this.value"></div>
-        <div class="field-group"><label>Описание</label><textarea oninput="siteData.services[${i}].desc=this.value">${s.desc}</textarea></div>
-        <div class="field-group"><label>Цена</label><input type="text" value="${s.price}" oninput="siteData.services[${i}].price=this.value"></div>
+        <div class="field-group"><label>Название</label><input type="text" value="${escapeHtml(s.title)}" oninput="siteData.services[${i}].title=this.value"></div>
+        <div class="field-group"><label>Описание</label><textarea oninput="siteData.services[${i}].desc=this.value">${escapeHtml(s.desc)}</textarea></div>
+        <div class="field-group">
+          <label for="service-price-${i}">Стоимость услуги</label>
+          <input id="service-price-${i}" type="text" value="${escapeHtml(s.price)}" aria-describedby="service-price-hint-${i}" oninput="siteData.services[${i}].price=this.value">
+          <p class="field-hint" id="service-price-hint-${i}">Укажите цену с валютой или «Бесплатно», например: от 8 000 ₽.</p>
+        </div>
       </div>
     `).join('')
   }
@@ -375,8 +382,29 @@
   }
 
   async function saveServices() {
-    await api('/api/admin/services', siteData.services)
-    showSaved('services-saved')
+    const button = document.getElementById('save-services-btn')
+    const error = document.getElementById('services-error')
+    if (button.disabled) return
+    button.disabled = true
+    button.textContent = 'Сохраняем…'
+    error.textContent = ''
+    document.getElementById('services-saved').classList.remove('show')
+    try {
+      const response = await api('/api/admin/services', siteData.services)
+      if (response.status === 401) {
+        error.textContent = 'Войдите в админку заново и повторите сохранение.'
+        return
+      }
+      if (!response.ok) throw new Error('Save failed')
+      const result = await response.json()
+      if (!result.ok) throw new Error('Save failed')
+      showSaved('services-saved')
+    } catch {
+      error.textContent = 'Не удалось сохранить услуги и цены. Проверьте соединение и повторите попытку.'
+    } finally {
+      button.disabled = false
+      button.textContent = 'Сохранить услуги и цены'
+    }
   }
 
   // ── CASES ──
@@ -480,6 +508,12 @@
   }
 
   // ── HELPERS ──
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[char]))
+  }
+
   async function api(url, body) {
     return fetch(url, {
       method: 'POST',
