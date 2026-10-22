@@ -24,7 +24,6 @@ function createApp(options = {}) {
   app.get('/admin', (req, res) => res.redirect('/admin.html'))
   app.use('/assets', express.static(path.join(__dirname, 'assets')))
   app.use('/uploads', express.static(uploadsDir, { dotfiles: 'deny', setHeaders(res) { res.setHeader('X-Content-Type-Options', 'nosniff') } }))
-  app.use(express.static(path.join(__dirname, 'public'), { dotfiles: 'deny' }))
 
   function readData() {
     const source = fs.existsSync(dataFile) ? dataFile : path.join(__dirname, 'data.json')
